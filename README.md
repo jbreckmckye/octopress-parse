@@ -5,7 +5,7 @@ I knocked up some utils to parse Octopress post stats.
 
 Analyses the stats / categories of your posts. It can list all the tags in your blog and all the files that possess a certain tag.
 
-This is helpful when you want to clean up and rationalise your categories: you can see how many near-duplicates you have ('videogames', 'video games' and 'video-games', for instance) and which posts have a tag you'd like to get rid of.
+This is helpful when you want to clean up and rationalise your categories: you can see how many near-duplicates you have ('videogames', 'video games' and 'video-games', for instance) and which posts have a tag you want to merge into another.
 
 ### Listing tags
 
