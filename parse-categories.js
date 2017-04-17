@@ -2,9 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const dir = process.argv[2];
-const categoryZoom = process.argv[3];
-
 const encoding = 'utf-8';
+const categoryZoom = process.argv[3];
 
 getFiles(dir)
 .then(getPosts)
@@ -72,8 +71,8 @@ function getFrontMatter(post) {
 	const data = post.content.split('---')[1];
 	const linebreaks = new RegExp(/\r\n?|\n/g); // needed for cross-platform compat
 	const lines = data.split(linebreaks).filter(s => s.length);
-	const entries = lines.map(getEntry);
-	return entries.map(parseEntry).reduce((acc, entry)=> {
+	const entryParts = lines.map(getEntry);
+	return entryParts.map(parseEntry).reduce((acc, entry)=> {
 		acc[entry.key] = entry.value;
 		return acc;
 	}, {});
@@ -85,17 +84,17 @@ function getFrontMatter(post) {
 		return [keyRaw, valRaw].map(s => s.trim());
 	}
 
-	function parseEntry(entry) {
-		const key = entry[0];
-		const isArrayValue = /^\[.*\]$/g.test(entry[1]);
+	function parseEntry(entryParts) {
+		const key = entryParts[0];
+		const isArrayValue = /^\[.*\]$/g.test(entryParts[1]);
 		const arrayBody = isArrayValue ? 
-			entry[1]
+			entryParts[1]
 			.split(/[\[\]]/g)[1] // between brackets
 			.split(',') // array items
 			.map(s => s.trim()) 
 		: null;
 		
-		const value = arrayBody ? arrayBody : entry[1];
+		const value = arrayBody ? arrayBody : entryParts[1];
 		return {key, value};
 	}
 }
