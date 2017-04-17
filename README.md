@@ -3,11 +3,13 @@ I knocked up some utils to parse Octopress post stats.
 
 ## parse-categories.js
 
-Analyses the stats / categories of your posts. It runs in two modes: an 'overview' of the categories in your library, listing each tag and the number of matches, and a 'search' mode listing all the posts that match a particular tag.
+Analyses the stats / categories of your posts. It can list all the tags in your blog and all the files that possess a certain tag.
 
-This is helpful when you want to clean up and rationalise your tags: if I've decided that 'videogames', 'video games' and 'video-games' should all be amalgamated into a single tag, I can see which one I've used more and which files might be using the undesirable alternatives.
+This is helpful when you want to clean up and rationalise your categories: you can see how many near-duplicates you have ('videogames', 'video games' and 'video-games', for instance) and which posts have a tag you'd like to get rid of.
 
-To use in **'overview'** mode, just pass in a directory to analyse:
+### Listing tags
+
+Just pass in a directory of posts:
 
 `node parse-categories.js D:/Octopress/source/_posts`
 
@@ -23,7 +25,9 @@ screen readers -- 1 files
 functional tests -- 1 files
 ```
 
-To use in **'search'** mode, add an extra argument for the tag to zoom in on:
+### Listing posts with a tag
+
+Add the tag as a secondary parameter:
 
 `node parse-categories.js D:/Octopress/source/_posts front-end`
 
