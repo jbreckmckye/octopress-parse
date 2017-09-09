@@ -69,7 +69,7 @@ function getStats(posts) {
 function getFrontMatter(post) {
 	// regex hell
 	const data = post.content.split('---')[1];
-	const linebreaks = new RegExp(/\r\n?|\n/g); // needed for cross-platform compat
+	const linebreaks = new RegExp(/\r\n?|\n/g); // needed for cross-platform compatibility
 	const lines = data.split(linebreaks).filter(s => s.length);
 	const entryParts = lines.map(getEntry);
 	return entryParts.map(parseEntry).reduce((acc, entry)=> {
